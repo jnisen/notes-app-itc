@@ -1,5 +1,5 @@
 import React from 'react'
-
+import TextareaAutosize from 'react-textarea-autosize'
 
 class AddNote extends React.Component {
     constructor(props) {
@@ -25,9 +25,9 @@ class AddNote extends React.Component {
         if (this.state.body.trim().length > 0) {
             const { handleAddNotes } = this.props
             handleAddNotes(this.state.body, this.state.title)
-            this.setState({ body: '', title: ''})
+            this.setState({ body: '', title: '' })
         } else {
-            this.setState({ body: '', title: ''})
+            this.setState({ body: '', title: '' })
         }
 
 
@@ -37,24 +37,24 @@ class AddNote extends React.Component {
         return (
             <form onSubmit={(e) => this.handleAddNote(e)}>
                 <div className="mt-1">
-                    <input type="text" 
-                        name="title" 
-                        id="title" 
-                        value={this.state.title} 
-                        className="form-control border-0 mb-2" 
+                    <input type="text"
+                        name="title"
+                        id="title"
+                        value={this.state.title}
+                        className="form-control border-0 mb-2"
                         placeholder="Title"
                         onChange={this.handleChangeTitle} />
-                    <textarea
+                    <TextareaAutosize
                         id="notes"
                         cols="40"
-                        rows="5"
+                        minRows={2}
+                        cacheMeasurements
                         placeholder="Type to add a note..."
-                        className="form-control border-0"
+                        className="form-control border-0 textarea"
                         value={this.state.body}
                         onChange={this.handleChangeTextArea}
                         required
-                    >
-                    </textarea>
+                    />
                 </div>
                 <div className="d-flex justify-content-center mt-2">
                     <button className="save btn btn-primary">Add Note</button>

@@ -6,8 +6,8 @@ const Notes = ({ note, handleDeleteNote }) => {
     return (
         <div className="note">
             <h2>{(title.length > 0) ? `Title: ${title}` : ''}</h2>
-            <span>{text}</span>
-            <div className="note-footer">
+            <span className="mt-3">{text}</span>
+            <div className="note-footer mt-4">
                 <small>{date}</small>
                 <MdDeleteForever className="delete-icon" size='1.3em' onClick={() => {
                     (window.confirm('Are you sure you want to delete this note')) ?

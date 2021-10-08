@@ -29,13 +29,12 @@ form{
   margin-top: 1em;
 }
 
-textarea {
+.textarea {
   resize: none;
-  background-color: red;
   border:none;
 }
 
-textarea:focus {
+.textarea:focus {
   outline: none;
 }
 
