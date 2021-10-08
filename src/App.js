@@ -17,6 +17,7 @@ class App extends React.Component {
 
   addNotes(body, title) {
     const date = new Date()
+
     const newNote = {
       id: nanoid(),
       title: title,
@@ -37,7 +38,6 @@ class App extends React.Component {
 
   render() {
     return (
-
       <div className="container ">
         <div className="d-flex justify-content-center mt-1">
           <AddNote handleAddNotes={this.addNotes} />
