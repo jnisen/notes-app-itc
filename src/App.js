@@ -10,12 +10,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       notes: []
-    } //array
+    } 
     this.addNotes = this.addNotes.bind(this)
     this.deleteNote = this.deleteNote.bind(this)
   }
 
   addNotes(body, title) {
+
     const date = new Date()
 
     const newNote = {

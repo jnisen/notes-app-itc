@@ -9,7 +9,7 @@ class AddNote extends React.Component {
             title: ''
         };
     }
-    
+
     handleAddNote(e) {
         e.preventDefault();
         if (this.state.body.trim().length > 0) {
@@ -19,8 +19,6 @@ class AddNote extends React.Component {
         } else {
             this.setState({ body: '', title: '' })
         }
-
-
     }
 
     render() {
