@@ -24,9 +24,9 @@ class AddNote extends React.Component {
         if (this.state.body.trim().length > 0) {
             const { handleAddNotes } = this.props
             handleAddNotes(this.state.body, this.state.title)
-
+            this.setState({ body: '', title: ''})
         } else {
-            //resetear  
+            this.setState({ body: '', title: ''})
         }
 
 
@@ -36,7 +36,7 @@ class AddNote extends React.Component {
         return (
             <form onSubmit={(e) => this.handleAddNote(e)}>
                 <div className="mt-1">
-                    <input type="text" name="title" id="title" className="form-control border-0 mb-2" placeholder="Title"
+                    <input type="text" name="title" id="title" value={this.state.title} className="form-control border-0 mb-2" placeholder="Title"
                         onChange={this.handleChangeTitle} />
                     <textarea
                         id="notes"

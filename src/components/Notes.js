@@ -6,7 +6,7 @@ const Notes = ({ note, handleDeleteNote }) => {
     return (
         <div className="note">
             <h2>Title: {title}</h2>
-            <span>Body: {text}</span>
+            <span>{text}</span>
             <div className="note-footer">
                 <small>{date}</small>
                 <MdDeleteForever className="delete-icon" size='1.3em' onClick={() => {
