@@ -4,6 +4,7 @@ import NotesList from './components/NotesList'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { nanoid } from 'nanoid';
+import date from 'date-and-time'
 
 class App extends React.Component {
   constructor(props) {
@@ -17,13 +18,13 @@ class App extends React.Component {
 
   addNotes(body, title) {
 
-    const date = new Date()
+    const now = new Date()
 
     const newNote = {
       id: nanoid(),
       title: title,
       text: body,
-      date: date.toLocaleDateString('en-GB')
+      date: date.format(now, 'MMM DD YYYY hh:mm A')
     }
 
     const newNotes = [...this.state.notes, newNote]
