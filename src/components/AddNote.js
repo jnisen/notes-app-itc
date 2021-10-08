@@ -47,6 +47,7 @@ class AddNote extends React.Component {
                         className="form-control border-0"
                         value={this.state.body}
                         onChange={this.handleChangeTextArea}
+                        required
                     >
                     </textarea>
                 </div>
