@@ -8,18 +8,8 @@ class AddNote extends React.Component {
             body: '',
             title: ''
         };
-        this.handleChangeTextArea = this.handleChangeTextArea.bind(this)
-        this.handleChangeTitle = this.handleChangeTitle.bind(this)
     }
-
-    handleChangeTitle(e) {
-        this.setState({ title: e.target.value })
-    }
-
-    handleChangeTextArea(e) {
-        this.setState({ body: e.target.value })
-    }
-
+    
     handleAddNote(e) {
         e.preventDefault();
         if (this.state.body.trim().length > 0) {
@@ -43,7 +33,7 @@ class AddNote extends React.Component {
                         value={this.state.title}
                         className="form-control border-0 mb-2"
                         placeholder="Title"
-                        onChange={this.handleChangeTitle} />
+                        onChange={(e) => this.setState({ title: e.target.value })} />
                     <TextareaAutosize
                         id="notes"
                         cols="40"
@@ -52,7 +42,7 @@ class AddNote extends React.Component {
                         placeholder="Type to add a note..."
                         className="form-control border-0 textarea"
                         value={this.state.body}
-                        onChange={this.handleChangeTextArea}
+                        onChange={(e)=>this.setState({ body: e.target.value })}
                         required
                     />
                 </div>
