@@ -4,7 +4,10 @@ import NotesList from './components/NotesList'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { nanoid } from 'nanoid';
+
 import date from 'date-and-time'
+import ordinal from 'date-and-time/plugin/ordinal'
+date.plugin(ordinal)
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +27,7 @@ class App extends React.Component {
       id: nanoid(),
       title: title,
       text: body,
-      date: date.format(now, 'MMM DD YYYY hh:mm A')
+      date: date.format(now, 'MMM DDD hh:mm A')
     }
 
     const newNotes = [...this.state.notes, newNote]
