@@ -7,6 +7,7 @@ import { nanoid } from 'nanoid';
 
 import date from 'date-and-time'
 import ordinal from 'date-and-time/plugin/ordinal'
+
 date.plugin(ordinal)
 
 class App extends React.Component {
@@ -14,9 +15,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       notes: []
-    } 
+    }
     this.addNotes = this.addNotes.bind(this)
     this.deleteNote = this.deleteNote.bind(this)
+    this.editNotes = this.editNotes.bind(this)
   }
 
   addNotes(body, title) {
@@ -27,13 +29,25 @@ class App extends React.Component {
       id: nanoid(),
       title: title,
       text: body,
-      date: date.format(now, 'MMM DDD hh:mm A')
+      createdate: date.format(now, 'MMM DDD hh:mm A'),
+      updatedate: null
     }
 
     const newNotes = [...this.state.notes, newNote]
 
     this.setState({ notes: newNotes })
 
+  }
+
+  editNotes(id, title, body) {
+    
+    const now = new Date()
+    const notes = [...this.state.notes]
+    const foundNotes = notes.find(note => note.id === id)
+    foundNotes.title = title
+    foundNotes.text = body
+    foundNotes.updatedate = date.format(now, 'MMM DDD hh:mm A')
+    this.setState({ notes: notes })
   }
 
   deleteNote(id) {
@@ -48,7 +62,7 @@ class App extends React.Component {
           <AddNote handleAddNotes={this.addNotes} />
         </div>
         <div className="mt-2">
-          <NotesList notes={this.state.notes} handleDeleteNote={this.deleteNote}/>
+          <NotesList notes={this.state.notes} handleDeleteNote={this.deleteNote} editNotes={this.editNotes} />
         </div>
       </div>
     )

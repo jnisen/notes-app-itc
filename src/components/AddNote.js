@@ -1,5 +1,7 @@
 import React from 'react'
-import TextareaAutosize from 'react-textarea-autosize'
+
+
+import Form from './Form'
 
 class AddNote extends React.Component {
     constructor(props) {
@@ -8,6 +10,16 @@ class AddNote extends React.Component {
             body: '',
             title: ''
         };
+        this.handleChangeTitle = this.handleChangeTitle.bind(this)
+        this.handleChangeBody = this.handleChangeBody.bind(this)
+    }
+
+    handleChangeTitle(e) {
+        this.setState({ title: e.target.value })
+    }
+
+    handleChangeBody(e) {
+        this.setState({ body: e.target.value })
     }
 
     handleAddNote(e) {
@@ -23,31 +35,13 @@ class AddNote extends React.Component {
 
     render() {
         return (
-            <form onSubmit={(e) => this.handleAddNote(e)}>
-                <div className="mt-1">
-                    <input type="text"
-                        name="title"
-                        id="title"
-                        value={this.state.title}
-                        className="form-control border-0 mb-2"
-                        placeholder="Title"
-                        onChange={(e) => this.setState({ title: e.target.value })} />
-                    <TextareaAutosize
-                        id="notes"
-                        cols="40"
-                        minRows={2}
-                        cacheMeasurements
-                        placeholder="Type to add a note..."
-                        className="form-control border-0 textarea"
-                        value={this.state.body}
-                        onChange={(e)=>this.setState({ body: e.target.value })}
-                        required
-                    />
-                </div>
-                <div className="d-flex justify-content-center mt-2">
-                    <button className="save btn btn-primary">Add Note</button>
-                </div>
-            </form>
+            <Form
+                handleSumbit={(e) => this.handleAddNote(e)}
+                handleData={this.state}
+                handleChangeBody={(e) => this.handleChangeBody(e)}
+                handleChangeTitle={(e) => this.handleChangeTitle(e)}
+                buttonLabel = "Add Notes"
+            />
         )
     }
 }
